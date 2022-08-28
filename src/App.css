@@ -5,8 +5,14 @@ body {
   background-color: #002b5b;
 }
 .header {
+  display: grid;
+  grid-template-columns: 0.2fr 1fr;
   font-family: "Aboreto", cursive;
   height: 100px;
+}
+.balance {
+  margin-left: 65%;
+  margin-top: -0.5%;
 }
 
 .App-logo {

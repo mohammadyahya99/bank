@@ -20,6 +20,13 @@ class App extends Component {
       ],
     };
   }
+  totalMony = () => {
+    let x = 0;
+    this.state.allTransactions.map((t) => {
+      x += t.amount;
+    });
+    return x;
+  };
   delete = (category, vendor) => {
     let x = [...this.state.allTransactions];
     let y = 0;
@@ -42,7 +49,14 @@ class App extends Component {
       <Router>
         <div className="App">
           <div className="header">
-            <h2>500</h2>
+            <span>
+              <h2>Mohammad yahya</h2>
+            </span>
+            <span>
+              <span className="balance">
+                <h2 className="balance">Total Balance :{this.totalMony()}$</h2>
+              </span>
+            </span>
           </div>
           <Route
             path="/"
