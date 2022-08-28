@@ -20,6 +20,23 @@ class App extends Component {
       ],
     };
   }
+  delete = (category, vendor) => {
+    let x = [...this.state.allTransactions];
+    let y = 0;
+    for (let i in x) {
+      if (x[i].category === category && x[i].vendor === vendor) {
+        y = i;
+        break;
+      }
+    }
+    x.splice(y, 1);
+    this.setState({ allTransactions: x });
+  };
+  add = (e) => {
+    let x = [...this.state.allTransactions];
+    x.push(e);
+    this.setState({ allTransactions: x });
+  };
   render() {
     return (
       <Router>
@@ -31,11 +48,18 @@ class App extends Component {
             path="/"
             exact
             render={() => (
-              <Transactions allTransactions={this.state.allTransactions} />
+              <Transactions
+                deleteButton={this.delete}
+                allTransactions={this.state.allTransactions}
+              />
             )}
           />
           <div className="buttons"></div>
-          <Route path="/operations" exact render={() => <Operations />} />
+          <Route
+            path="/operations"
+            exact
+            render={() => <Operations add={this.add} />}
+          />
         </div>
       </Router>
     );

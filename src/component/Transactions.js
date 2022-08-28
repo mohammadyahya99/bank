@@ -9,7 +9,7 @@ class Transactions extends Component {
       <div className="transactions">
         <h1 className="tHeader">Transactions</h1>
         {this.props.allTransactions.map((t) => (
-          <Transaction tran={t} />
+          <Transaction deleteButton={this.props.deleteButton} tran={t} />
         ))}
         <button class="mainButton">categories</button>
         <Link to="/operations">

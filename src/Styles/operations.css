@@ -21,7 +21,7 @@ body {
   width: 80%;
   border-color: #8fe3cf;
 }
-.operationsButton {
+.operation1Button {
   background-color: #256d85;
 
   border: none;
@@ -32,7 +32,21 @@ body {
   font-size: larger;
 }
 
-.operationsButton:hover {
+.operation1Button:hover {
+  background-color: #8fe3cf;
+}
+.operation2Button {
+  background-color: #256d85;
+
+  border: none;
+  margin: 20px;
+  font-family: "Aboreto", cursive;
+  border-radius: 15px;
+  width: 200px;
+  font-size: larger;
+}
+
+.operation2Button:hover {
   background-color: #8fe3cf;
 }
 
