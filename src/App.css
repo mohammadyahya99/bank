@@ -1,6 +1,13 @@
 .App {
   text-align: center;
 }
+body {
+  background-color: #002b5b;
+}
+.header {
+  font-family: "Aboreto", cursive;
+  height: 100px;
+}
 
 .App-logo {
   height: 40vmin;

@@ -1,0 +1,43 @@
+body {
+  background-color: #002b5b;
+}
+.inputs {
+  font-family: "Aboreto", cursive;
+  border: 0;
+  background: none;
+  display: block;
+  margin: 30px auto;
+  text-align: center;
+  border: 2px solid #256d85;
+  padding: 14px 10px;
+  width: 50%;
+  outline: none;
+  color: black;
+  border-radius: 24px;
+  transition: 0.25s;
+  font-size: large;
+}
+.inputs:focus {
+  width: 80%;
+  border-color: #8fe3cf;
+}
+.operationsButton {
+  background-color: #256d85;
+
+  border: none;
+  margin: 20px;
+  font-family: "Aboreto", cursive;
+  border-radius: 15px;
+  width: 200px;
+  font-size: larger;
+}
+
+.operationsButton:hover {
+  background-color: #8fe3cf;
+}
+
+::placeholder {
+  color: black;
+  opacity: 1;
+  font-size: large;
+}
