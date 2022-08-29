@@ -3,7 +3,7 @@ import "../Styles/transaction.css";
 
 class Transaction extends Component {
   delete = () => {
-    this.props.deleteButton(this.props.tran.category, this.props.tran.vendor);
+    this.props.deleteButton(this.props.tran._id);
   };
   render() {
     return (

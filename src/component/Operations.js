@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "../Styles/operations.css";
 
 class Operations extends Component {
@@ -59,12 +60,16 @@ class Operations extends Component {
             placeholder="amount"
           ></input>
         </div>
-        <button onClick={this.add} className="operation1Button">
-          Deposit
-        </button>
-        <button onClick={this.add} className="operation2Button">
-          Withdraw
-        </button>
+        <Link to="/">
+          <button onClick={this.add} className="operation1Button">
+            Deposit
+          </button>
+        </Link>
+        <Link to="/">
+          <button onClick={this.add} className="operation2Button">
+            Withdraw
+          </button>
+        </Link>
       </div>
     );
   }

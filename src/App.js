@@ -1,8 +1,6 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Operations from "./component/Operations";
 import Transactions from "./component/Transactions";
-
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import axios from "axios";
 
@@ -12,13 +10,24 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      allTransactions: [
-        { amount: 3200, vendor: "Elevation", category: "Salary" },
-        { amount: -7, vendor: "Runescape", category: "Entertainment" },
-        { amount: -20, vendor: "Subway", category: "Food" },
-        { amount: -98, vendor: "La Baguetterie", category: "Food" },
-      ],
+      allTransactions: [],
     };
+  }
+  async getDbTransactions() {
+    return axios.get("http://localhost:8888/transactions");
+  }
+  async postDbTransactions(newTrans) {
+    axios.post("http://localhost:8888/transaction", newTrans);
+  }
+  async deleteDbTransactions(transactionID) {
+    await axios.delete(`http://localhost:8888/transaction/${transactionID}`);
+  }
+  async componentDidMount() {
+    const transactionsState = await this.getDbTransactions();
+    this.setState({ allTransactions: transactionsState.data });
+  }
+  async componentDidUpdate() {
+    this.componentDidMount();
   }
   totalMony = () => {
     let x = 0;
@@ -26,23 +35,6 @@ class App extends Component {
       x += t.amount;
     });
     return x;
-  };
-  delete = (category, vendor) => {
-    let x = [...this.state.allTransactions];
-    let y = 0;
-    for (let i in x) {
-      if (x[i].category === category && x[i].vendor === vendor) {
-        y = i;
-        break;
-      }
-    }
-    x.splice(y, 1);
-    this.setState({ allTransactions: x });
-  };
-  add = (e) => {
-    let x = [...this.state.allTransactions];
-    x.push(e);
-    this.setState({ allTransactions: x });
   };
   render() {
     return (
@@ -63,7 +55,7 @@ class App extends Component {
             exact
             render={() => (
               <Transactions
-                deleteButton={this.delete}
+                deleteButton={this.deleteDbTransactions}
                 allTransactions={this.state.allTransactions}
               />
             )}
@@ -72,7 +64,7 @@ class App extends Component {
           <Route
             path="/operations"
             exact
-            render={() => <Operations add={this.add} />}
+            render={() => <Operations add={this.postDbTransactions} />}
           />
         </div>
       </Router>
